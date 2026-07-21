@@ -1,0 +1,798 @@
+<!-- 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>دليل مطاعم بورتو السخنة</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Tahoma,sans-serif;
+}
+
+body{
+background:#f3f4f6;
+color:#111827;
+}
+
+.header{
+background:#0f172a;
+color:white;
+padding:25px;
+text-align:center;
+box-shadow:0 2px 10px rgba(0,0,0,.2);
+}
+
+.logo-box{
+text-align:center;
+padding:25px;
+}
+
+.logo-box img{
+width:140px;
+height:140px;
+border-radius:20px;
+object-fit:cover;
+border:4px solid #d4af37;
+box-shadow:0 4px 15px rgba(0,0,0,.2);
+}
+
+.restaurant-title{
+font-size:32px;
+font-weight:bold;
+margin-top:15px;
+color:#0f172a;
+}
+
+.rating{
+margin-top:10px;
+font-size:18px;
+color:#d4af37;
+font-weight:bold;
+}
+
+.location{
+margin-top:8px;
+color:#666;
+font-size:15px;
+}
+
+.actions{
+max-width:800px;
+margin:15px auto;
+padding:0 15px;
+display:grid;
+grid-template-columns:1fr;
+gap:10px;
+}
+
+.btn{
+display:block;
+text-align:center;
+padding:14px;
+border-radius:12px;
+text-decoration:none;
+font-weight:bold;
+font-size:17px;
+transition:.3s;
+}
+
+.btn:hover{
+transform:translateY(-2px);
+}
+
+.call-btn{
+background:#16a34a;
+color:white;
+}
+
+.website-btn{
+background:#d4af37;
+color:#0f172a;
+}
+
+.share-btn{
+background:#2563eb;
+color:white;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:15px;
+}
+
+.section-title{
+font-size:24px;
+font-weight:bold;
+margin-bottom:15px;
+color:#0f172a;
+text-align:center;
+}
+
+.item{
+background:white;
+padding:18px;
+margin-bottom:12px;
+border-radius:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 2px 8px rgba(0,0,0,.08);
+transition:.3s;
+}
+
+.item:hover{
+transform:translateY(-2px);
+}
+
+.food-name{
+font-weight:bold;
+font-size:17px;
+}
+
+.food-price{
+color:#d4af37;
+font-weight:bold;
+font-size:16px;
+}
+
+.back{
+display:block;
+width:260px;
+margin:25px auto;
+text-align:center;
+background:#e63946;
+color:white;
+padding:14px;
+text-decoration:none;
+border-radius:12px;
+font-weight:bold;
+font-size:17px;
+}
+
+.footer{
+text-align:center;
+padding:20px;
+color:#777;
+font-size:14px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+🍽️ دليل مطاعم بورتو السخنة
+
+</div>
+
+<div class="logo-box">
+
+<img id="restaurantLogo" src="">
+
+<div class="restaurant-title" id="restaurantName">
+
+اسم المطعم
+
+</div>
+
+<div class="rating" id="restaurantRating">
+
+⭐ 4.8 (324 تقييم)
+
+</div>
+
+<div class="location">
+
+📍 Porto Sokhna
+
+</div>
+
+</div>
+
+<div class="actions">
+
+<a id="callBtn" href="#" class="btn call-btn">
+
+📞 اتصل الآن
+
+</a>
+
+<a id="officialLink" href="#" target="_blank" class="btn website-btn">
+
+🌐 الصفحة الرسمية
+
+</a>
+
+<a href="#" onclick="shareRestaurant()" class="btn share-btn">
+
+📤 مشاركة المطعم
+
+</a>
+
+</div>
+
+<div class="container">
+
+<div class="section-title">
+
+🍴 قائمة الطعام
+
+</div>
+
+<div id="menu"></div>
+<body>
+
+<div class="header" id="restaurantName">
+اسم المطعم
+</div>
+
+<div class="container" id="menu"></div>
+
+<a id="officialLink"
+href="#"
+target="_blank"
+class="menu-btn">
+🌐 facebook
+</a>
+
+
+<a href="restaurants.html" class="back">
+
+🍴 العودة للمطاعم
+
+</a>
+
+<div class="footer">
+
+Porto Sokhna Restaurant Guide © 2026
+
+</div>
+
+</div>
+
+<script>
+
+const restaurant =
+localStorage.getItem("restaurant");
+
+document.getElementById("restaurantName")
+.innerText = restaurant;
+
+
+/* الصور */
+
+const logos = {
+
+"Murano":"images/murano.jpg",
+
+"Second Cup":"images/second-cup.jpg",
+
+"KIG Market":"images/kig-market.png",
+
+"ليالي فيروزا":"images/layaly-firoza.jpg",
+
+"Labash لبش":"images/labash.jpg",
+
+"تشيليز":"images/chilis.png",
+
+"بطاطس اند زلابيا":"images/batates-zalabia.jpg"
+
+};
+
+
+/* التقييمات */
+
+const ratings = {
+
+"Murano":"⭐ 4.8 (324 تقييم)",
+
+"Second Cup":"⭐ 4.7 (211 تقييم)",
+
+"KIG Market":"⭐ 4.6 (173 تقييم)",
+
+"ليالي فيروزا":"⭐ 4.9 (412 تقييم)",
+
+"Labash لبش":"⭐ 4.7 (268 تقييم)",
+
+"تشيليز":"⭐ 4.8 (387 تقييم)",
+
+"بطاطس اند زلابيا":"⭐ 4.6 (154 تقييم)"
+
+};
+
+
+/* أرقام تجريبية */
+
+const phones = {
+
+"Murano":"201000000001",
+
+"Second Cup":"201000000002",
+
+"KIG Market":"201000000003",
+
+"ليالي فيروزا":"201000000004",
+
+"Labash لبش":"201000000005",
+
+"تشيليز":"201000000006",
+
+"بطاطس اند زلابيا":"201000000007"
+
+};
+
+
+/* الروابط الرسمية */
+
+const links = {
+
+"Murano":"https://www.facebook.com/Murano.eg/?locale=ar_AR",
+
+"Second Cup":"https://www.facebook.com/SecondCupEgypt/?locale=ar_AR",
+
+"KIG Market":"https://www.facebook.com/p/KIG-Market-%D9%83%D9%8A-%D8%A7%D9%8A-%D8%AC%D9%8A-%D9%85%D8%A7%D8%B1%D9%83%D8%AA-61554489426906/?locale=ar_AR",
+
+"ليالي فيروزا":"https://www.facebook.com/layali.fayrouz.cafe/",
+
+"Labash لبش":"https://www.facebook.com/Labash.eg/?locale=ar_AR",
+
+"تشيليز":"https://www.facebook.com/ChilisEgypt/?locale=ar_AR",
+
+"بطاطس اند زلابيا":"https://www.facebook.com/Batateszalabya/?locale=ar_AR"
+
+};
+
+
+/* المنيو */
+
+const menus = {
+
+"Murano":[
+["🍕 بيتزا مارجريتا","170 جنيه"],
+["🍕 بيتزا تشيكن","220 جنيه"],
+["🥤 بيبسي","25 جنيه"]
+],
+
+"Second Cup":[
+["☕ لاتيه","90 جنيه"],
+["☕ كابتشينو","85 جنيه"],
+["🍪 كوكيز","45 جنيه"]
+],
+
+"KIG Market":[
+["💧 مياه","15 جنيه"],
+["🧃 عصير","35 جنيه"],
+["🍟 شيبسي","20 جنيه"]
+],
+
+"ليالي فيروزا":[
+["🥩 مشويات مشكلة","320 جنيه"],
+["🍢 كباب","250 جنيه"],
+["🥤 كولا","25 جنيه"]
+],
+
+"Labash لبش":[
+["🌯 شاورما فراخ","140 جنيه"],
+["🌯 شاورما لحم","170 جنيه"],
+["🍟 بطاطس","40 جنيه"]
+],
+
+"تشيليز":[
+["🍔 برجر","220 جنيه"],
+["🍟 بطاطس","55 جنيه"],
+["🥤 بيبسي","25 جنيه"]
+],
+
+"بطاطس اند زلابيا":[
+["🍟 بطاطس فرنسي","45 جنيه"],
+["🍩 زلابيا","40 جنيه"],
+["🧃 عصير","55 جنيه"]
+]
+
+};
+
+
+/* تحميل البيانات */
+
+if(logos[restaurant]){
+
+document.getElementById("restaurantLogo").src =
+logos[restaurant];
+
+}
+
+if(ratings[restaurant]){
+
+document.getElementById("restaurantRating").innerText =
+ratings[restaurant];
+
+}
+
+if(phones[restaurant]){
+
+document.getElementById("callBtn").href =
+"tel:+" + phones[restaurant];
+
+}
+
+if(links[restaurant]){
+
+document.getElementById("officialLink").href =
+links[restaurant];
+
+}
+
+
+/* المنيو */
+
+let html = "";
+
+if(menus[restaurant]){
+
+menus[restaurant].forEach(item=>{
+
+html += `
+
+<div class="item">
+
+<div class="food-name">
+
+${item[0]}
+
+</div>
+
+<div class="food-price">
+
+${item[1]}
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+document.getElementById("menu").innerHTML =
+html;
+
+
+/* مشاركة */
+
+function shareRestaurant(){
+
+const text =
+"🍽️ " + restaurant +
+"\nمن دليل مطاعم بورتو السخنة";
+
+if(navigator.share){
+
+navigator.share({
+
+title:restaurant,
+
+text:text
+
+});
+
+}else{
+
+alert(text);
+
+}
+
+}
+
+</script>
+
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>تفاصيل المطعم</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="header">
+
+<div class="header-main">
+🍽️ دليل مطاعم بورتو السخنة
+</div>
+
+</div>
+
+<div class="logo-box">
+
+<img id="restaurantLogo" src="" alt="Restaurant Logo">
+
+<div class="restaurant-title" id="restaurantName">
+اسم المطعم
+</div>
+
+<div class="rating" id="restaurantRating">
+⭐ 4.8
+</div>
+
+<div class="location">
+📍 Porto Sokhna
+</div>
+
+</div>
+
+<div class="actions">
+
+<a id="callBtn" href="#" class="btn call-btn">
+📞 اتصل الآن
+</a>
+
+<a id="officialLink" href="#" target="_blank" class="btn website-btn">
+🌐 الصفحة الرسمية
+</a>
+
+<a id="whatsappBtn" href="#" target="_blank" class="btn call-btn">
+💬 واتساب
+</a>
+
+<a id="directionBtn" href="#" target="_blank" class="btn website-btn">
+📍 الاتجاهات
+</a>
+
+<a href="#" onclick="shareRestaurant()" class="btn share-btn">
+📤 مشاركة المطعم
+</a>
+
+</div>
+
+<div class="container">
+
+<div class="section-title">
+🍴 قائمة الطعام
+</div>
+
+<div id="menu"></div>
+
+<a href="restaurants.html" class="back">
+🍴 العودة للمطاعم
+</a>
+
+<div class="footer">
+Porto Sokhna Restaurant Guide © 2026
+</div>
+
+</div>
+
+<script>
+
+const restaurant = localStorage.getItem("restaurant");
+
+document.getElementById("restaurantName").innerText =
+restaurant || "مطعم";
+
+const logos = {
+
+"Murano":"images/murano.jpg",
+"Second Cup":"images/second-cup.jpg",
+"KIG Market":"images/kig-market.png",
+"ليالي فيروزا":"images/layaly-firoza.jpg",
+"Labash لبش":"images/labash.jpg",
+"تشيليز":"images/chilis.png",
+"بطاطس اند زلابيا":"images/batates-zalabia.jpg"
+
+};
+
+const ratings = {
+
+"Murano":"⭐ 4.8 (324 تقييم)",
+"Second Cup":"⭐ 4.7 (211 تقييم)",
+"KIG Market":"⭐ 4.6 (173 تقييم)",
+"ليالي فيروزا":"⭐ 4.9 (412 تقييم)",
+"Labash لبش":"⭐ 4.7 (268 تقييم)",
+"تشيليز":"⭐ 4.8 (387 تقييم)",
+"بطاطس اند زلابيا":"⭐ 4.6 (154 تقييم)"
+
+};
+
+const phones = {
+
+"Murano":"201000000001",
+"Second Cup":"201000000002",
+"KIG Market":"201000000003",
+"ليالي فيروزا":"201000000004",
+"Labash لبش":"201000000005",
+"تشيليز":"201000000006",
+"بطاطس اند زلابيا":"201000000007"
+
+};
+
+const whatsapp = {
+
+"Murano":"201000000001",
+"Second Cup":"201000000002",
+"KIG Market":"201000000003",
+"ليالي فيروزا":"201000000004",
+"Labash لبش":"201000000005",
+"تشيليز":"201000000006",
+"بطاطس اند زلابيا":"201000000007"
+
+};
+
+const links = {
+
+"Murano":"https://www.facebook.com/Murano.eg/?locale=ar_AR",
+"Second Cup":"https://www.facebook.com/SecondCupEgypt/?locale=ar_AR",
+"KIG Market":"https://www.facebook.com/p/KIG-Market-%D9%83%D9%8A-%D8%A7%D9%8A-%D8%AC%D9%8A-%D9%85%D8%A7%D8%B1%D9%83%D8%AA-61554489426906/?locale=ar_AR",
+"ليالي فيروزا":"https://www.facebook.com/layali.fayrouz.cafe/",
+"Labash لبش":"https://www.facebook.com/Labash.eg/?locale=ar_AR",
+"تشيليز":"https://www.facebook.com/ChilisEgypt/?locale=ar_AR",
+"بطاطس اند زلابيا":"https://www.facebook.com/Batateszalabya/?locale=ar_AR"
+
+};
+
+const directions = {
+
+"Murano":"29.444396848112312,32.4820499221124",
+
+"Second Cup":"29.444890806997023,32.48137861896577",
+
+"KIG Market":"29.444279017853116,32.4814546067667",
+
+"ليالي فيروزا":"29.444612789205223,32.48136785931161",
+
+"Labash لبش":"29.444762560002808,32.48092262211434",
+
+"تشيليز":"29.444750,32.480466",
+
+"بطاطس اند زلابيا":"29.445787729170053,32.48197943377611"
+
+};
+
+const menus = {
+
+"Murano":[
+["🍕 بيتزا مارجريتا","170 جنيه"],
+["🍕 بيتزا تشيكن","220 جنيه"],
+["🥤 بيبسي","25 جنيه"]
+],
+
+"Second Cup":[
+["☕ لاتيه","90 جنيه"],
+["☕ كابتشينو","85 جنيه"],
+["🍪 كوكيز","45 جنيه"]
+],
+
+"KIG Market":[
+["💧 مياه","15 جنيه"],
+["🧃 عصير","35 جنيه"],
+["🍟 شيبسي","20 جنيه"]
+],
+
+"ليالي فيروزا":[
+["🥩 مشويات مشكلة","320 جنيه"],
+["🍢 كباب","250 جنيه"],
+["🥤 كولا","25 جنيه"]
+],
+
+"Labash لبش":[
+["🌯 شاورما فراخ","140 جنيه"],
+["🌯 شاورما لحم","170 جنيه"],
+["🍟 بطاطس","40 جنيه"]
+],
+
+"تشيليز":[
+["🍔 برجر","220 جنيه"],
+["🍟 بطاطس","55 جنيه"],
+["🥤 بيبسي","25 جنيه"]
+],
+
+"بطاطس اند زلابيا":[
+["🍟 بطاطس فرنسي","45 جنيه"],
+["🍩 زلابيا","40 جنيه"],
+["🧃 عصير","55 جنيه"]
+]
+
+};
+
+if(logos[restaurant]){
+document.getElementById("restaurantLogo").src = logos[restaurant];
+}
+
+if(ratings[restaurant]){
+document.getElementById("restaurantRating").innerText = ratings[restaurant];
+}
+
+if(phones[restaurant]){
+document.getElementById("callBtn").href = "tel:+" + phones[restaurant];
+}
+if(whatsapp[restaurant]){
+
+document.getElementById("whatsappBtn").href =
+"https://wa.me/" + whatsapp[restaurant];
+
+}
+
+if(links[restaurant]){
+document.getElementById("officialLink").href = links[restaurant];
+}
+if(directions[restaurant]){
+
+document.getElementById("directionBtn").href =
+"https://www.google.com/maps?q=" +
+directions[restaurant];
+
+}
+
+let html = "";
+
+if(menus[restaurant]){
+
+menus[restaurant].forEach(item=>{
+
+html += `
+<div class="item">
+
+<div class="food-name">
+${item[0]}
+</div>
+
+<div class="food-price">
+${item[1]}
+</div>
+
+</div>
+`;
+
+});
+
+}
+
+document.getElementById("menu").innerHTML = html;
+
+function shareRestaurant(){
+
+const text =
+"🍽️ " + restaurant +
+"\nمن دليل مطاعم بورتو السخنة";
+
+if(navigator.share){
+
+navigator.share({
+title: restaurant,
+text: text
+});
+
+}else{
+
+alert(text);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>

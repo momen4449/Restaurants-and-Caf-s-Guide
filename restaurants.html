@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>المطاعم</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+.search-box{
+max-width:900px;
+margin:15px auto;
+padding:0 15px;
+}
+
+.search-box input{
+width:100%;
+padding:14px;
+border-radius:14px;
+border:2px solid #d4af37;
+font-size:16px;
+outline:none;
+}
+
+.restaurant-rating{
+color:#d4af37;
+font-weight:bold;
+font-size:14px;
+margin-top:5px;
+}
+
+.restaurant-count{
+text-align:center;
+margin:10px;
+color:#666;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<div class="header-main">
+🏆 Porto Sokhna Guide
+</div>
+
+<div class="header-sub">
+🍴 دليل المطاعم
+</div>
+
+</div>
+
+<div class="search-box">
+
+<input
+type="text"
+id="searchInput"
+placeholder="🔍 ابحث عن مطعم أو كافيه..."
+>
+
+</div>
+
+<div class="restaurant-count" id="restaurantCount">
+عدد الأماكن: 7
+</div>
+
+<div class="container" id="restaurants"></div>
+
+<div class="bottom-nav">
+
+<a href="index.html">
+📍 الخريطة
+</a>
+
+<a href="restaurants.html" class="active">
+🍴 المطاعم
+</a>
+
+<a href="about.html">
+ℹ️ عن الموقع
+</a>
+
+</div>
+
+<script>
+
+const restaurants = [
+
+{
+name:"Murano",
+logo:"images/murano.jpg",
+rating:"⭐ 4.8"
+},
+
+{
+name:"Second Cup",
+logo:"images/second-cup.jpg",
+rating:"⭐ 4.7"
+},
+
+{
+name:"KIG Market",
+logo:"images/kig-market.png",
+rating:"⭐ 4.6"
+},
+
+{
+name:"ليالي فيروزا",
+logo:"images/layaly-firoza.jpg",
+rating:"⭐ 4.9"
+},
+
+{
+name:"Labash لبش",
+logo:"images/labash.jpg",
+rating:"⭐ 4.7"
+},
+
+{
+name:"تشيليز",
+logo:"images/chilis.png",
+rating:"⭐ 4.8"
+},
+
+{
+name:"بطاطس اند زلابيا",
+logo:"images/batates-zalabia.jpg",
+rating:"⭐ 4.6"
+}
+
+];
+
+function renderRestaurants(data){
+
+let html = "";
+
+data.forEach(rest=>{
+
+html += `
+
+<div
+class="restaurant"
+
+onclick="
+localStorage.setItem('restaurant','${rest.name}');
+window.location.href='restaurant.html';
+"
+
+>
+
+<img src="${rest.logo}" alt="${rest.name}">
+
+<div class="info">
+
+<h3>${rest.name}</h3>
+
+<p>
+📍 Porto Sokhna
+</p>
+
+<div class="restaurant-rating">
+${rest.rating}
+</div>
+
+</div>
+
+<div class="arrow">
+›
+</div>
+
+</div>
+
+`;
+
+});
+
+document.getElementById("restaurants").innerHTML = html;
+
+document.getElementById("restaurantCount").innerText =
+"عدد الأماكن: " + data.length;
+
+}
+
+renderRestaurants(restaurants);
+
+document
+.getElementById("searchInput")
+.addEventListener("keyup",function(){
+
+const value =
+this.value.toLowerCase();
+
+const filtered =
+restaurants.filter(rest=>
+rest.name.toLowerCase().includes(value)
+);
+
+renderRestaurants(filtered);
+
+});
+
+</script>
+
+</body>
+</html>
