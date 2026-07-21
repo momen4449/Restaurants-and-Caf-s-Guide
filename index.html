@@ -1,284 +1,4 @@
-<!-- <!DOCTYPE html>
-<html lang="ar" dir="rtl">
-
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>دليل مطاعم بورتو السخنة</title>
-
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Tahoma,sans-serif;
-}
-
-body{
-background:#f5f5f5;
-height:100vh;
-overflow:hidden;
-}
-
-.header{
-height:80px;
-background:#0f172a;
-color:#d4af37;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-font-size:22px;
-font-weight:bold;
-box-shadow:0 2px 15px rgba(0,0,0,.2);
-border:2px solid #d4af37;
-}
-
-.map-card{
-width:95%;
-height:calc(100vh - 170px);
-margin:10px auto;
-background:white;
-border-radius:25px;
-overflow:hidden;
-box-shadow:0 6px 20px rgba(0,0,0,.15);
-border:2px solid #d4af37;
-}
-
-#map{
-width:100%;
-height:100%;
-}
-
-.bottom-nav{
-height:75px;
-background:#0f172a;
-display:flex;
-justify-content:space-around;
-align-items:center;
-box-shadow:0 -2px 15px rgba(0,0,0,.2);
-}
-
-.bottom-nav a{
-text-decoration:none;
-color:white;
-font-weight:bold;
-font-size:15px;
-transition:.3s;
-}
-
-.bottom-nav .active{
-color:#d4af37;
-}
-
-.leaflet-popup-content{
-margin:10px;
-}
-
-.restaurant-icon{
-background:#e63946;
-width:30px;
-height:30px;
-border-radius:50%;
-display:flex;
-justify-content:center;
-align-items:center;
-color:white;
-font-size:16px;
-border:2px solid white;
-}
-
-</style>
-
-</head>
-
-<body>
-
-<div class="header">
-
-<div style="font-size:24px;">
-🏆 Porto Sokhna Guide
-</div>
-
-<div style="font-size:15px;margin-top:5px;">
-🏆 Porto Sokhna Guide
-🍴 دليل مطاعم بورتو السخنة
-</div>
-
-</div>
-
-<div class="map-card">
-<div id="map"></div>
-</div>
-
-<div class="bottom-nav">
-
-<a href="index.html" class="active">
-📍 الخريطة
-</a>
-
-<a href="restaurants.html">
-🍴 المطاعم
-</a>
-
-<a href="about.html">
-ℹ️ عن الموقع
-</a>
-
-</div>
-
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-<script>
-
-const map = L.map('map').setView(
-[29.443438,32.479588],
-17
-);
-
-L.tileLayer(
-'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-{
-maxZoom:33
-}
-).addTo(map);
-
-const restaurantIcon = L.divIcon({
-html:'🍴',
-className:'restaurant-icon',
-iconSize:[30,30]
-});
-
-const restaurants = [
-
-
-{
-    name:"Murano",
-    lat:29.444396848112312,
-    lng:32.4820499221124,
-    logo:"images/murano.jpg"
-},
-
-{
-    name:"Second Cup",
-    lat:29.444890806997023,
-    lng:32.48137861896577,
-    logo:"images/second-cup.jpg"
-},
-
-{
-    name:"KIG Market",
-    lat:29.444279017853116,
-    lng:32.4814546067667,
-    logo:"images/kig-market.png"
-},
-
-{
-    name:"ليالي فيروزا",
-    lat:29.444612789205223,
-    lng:32.48136785931161,
-    logo:"images/layaly-firoza.jpg"
-},
-
-{
-    name:"Labash لبش",
-    lat:29.444762560002808,
-    lng:32.48092262211434,
-    logo:"images/labash.jpg"
-},
-
-{
-    name:"تشيليز",
-    lat:29.444750,
-    lng:32.480466,
-    logo:"images/chilis.png"
-},
-
-{
-    name:"بطاطس اند زلابيا",
-    lat:29.445787729170053,
-    lng:32.48197943377611,
-    logo:"images/batates-zalabia.jpg"
-}
-];
-
-restaurants.forEach(rest => {
-
-L.marker(
-[rest.lat,rest.lng],
-{
-icon:restaurantIcon
-}
-)
-.addTo(map)
-.bindPopup(`
-
-<div style="text-align:center;width:220px;">
-
-<img
-src="${rest.logo}"
-alt="${rest.name}"
-style="
-width:100px;
-height:100px;
-object-fit:cover;
-border-radius:12px;
-margin-bottom:10px;
-">
-
-<h3 style="margin-bottom:10px;">
-${rest.name}
-</h3>
-<p style="
-color:#d4af37;
-font-weight:bold;
-margin-bottom:5px;
-">
-⭐ 4.8 (324 تقييم)
-</p>
-
-<p style="
-color:#666;
-margin-bottom:10px;
-font-size:13px;
-">
-📍 Porto Sokhna
-</p>
-
-<button
-onclick="
-localStorage.setItem('restaurant','${rest.name}');
-window.location.href='restaurant.html';
-"
-style="
-width:100%;
-padding:10px;
-border:none;
-border-radius:8px;
-background:#e63946;
-color:white;
-cursor:pointer;
-font-size:15px;
-">
-
-عرض المنيو
-
-</button>
-
-</div>
-
-`);
-
-});
-
-</script>
-
-</body>
-</html> -->
+<!-- 
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -474,4 +194,268 @@ cursor:pointer;
 </script>
 
 </body>
+</html> -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Porto Sokhna Guide</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+</head>
+
+
+<body>
+
+
+<div class="header">
+
+<div class="header-main">
+🏆 Porto Sokhna Guide
+</div>
+
+
+<div class="header-sub">
+🍴 دليل مطاعم بورتو السخنة
+</div>
+
+</div>
+
+
+
+<div class="map-card">
+
+<div id="map"></div>
+
+</div>
+
+
+
+<div class="bottom-nav">
+
+
+<a href="index.html" class="active">
+
+📍 الخريطة
+
+</a>
+
+
+<a href="restaurants.html">
+
+🍴 المطاعم
+
+</a>
+
+
+<a href="about.html">
+
+ℹ️ عن الموقع
+
+</a>
+
+
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script src="data.js"></script>
+
+
+<script>
+
+
+const map = L.map('map').setView(
+
+[29.443438,32.479588],
+
+17
+
+);
+
+
+
+L.tileLayer(
+
+'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+
+{
+
+maxZoom:22
+
+}
+
+).addTo(map);
+
+
+
+
+
+const restaurantIcon = L.divIcon({
+
+html:'🍴',
+
+className:'restaurant-icon',
+
+iconSize:[30,30]
+
+});
+
+
+
+
+
+Object.keys(restaurantsData).forEach(name=>{
+
+
+const rest = restaurantsData[name];
+
+
+
+if(!rest.location) return;
+
+
+
+const coords = rest.location.split(",");
+
+
+
+const lat = coords[0];
+
+const lng = coords[1];
+
+
+
+
+
+L.marker(
+
+[lat,lng],
+
+{
+
+icon:restaurantIcon
+
+}
+
+)
+
+.addTo(map)
+
+
+
+.bindPopup(`
+
+
+<div style="text-align:center;width:220px;">
+
+
+<img
+
+src="${rest.logo}"
+
+style="
+
+width:100px;
+
+height:100px;
+
+object-fit:cover;
+
+border-radius:12px;
+
+border:2px solid #d4af37;
+
+"
+
+
+
+>
+
+
+
+<h3>
+
+${name}
+
+</h3>
+
+
+
+
+<p style="color:#d4af37;font-weight:bold;">
+
+${rest.rating}
+
+</p>
+
+
+
+<button
+
+onclick="
+
+localStorage.setItem('restaurant','${name}');
+
+window.location.href='restaurant.html';
+
+"
+
+
+
+style="
+
+width:100%;
+
+padding:10px;
+
+border:none;
+
+border-radius:8px;
+
+background:#e63946;
+
+color:white;
+
+font-weight:bold;
+
+cursor:pointer;
+
+"
+
+>
+
+
+عرض المطعم
+
+
+</button>
+
+
+
+</div>
+
+
+
+`);
+
+
+
+});
+
+
+
+</script>
+
+
+</body>
+
 </html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 
@@ -210,4 +210,361 @@ renderRestaurants(filtered);
 </script>
 
 </body>
+</html> -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>المطاعم</title>
+
+
+<link rel="stylesheet" href="style.css">
+
+
+</head>
+
+
+<body>
+
+
+
+<div class="header">
+
+
+<div class="header-main">
+
+🏆 Porto Sokhna Guide
+
+</div>
+
+
+
+<div class="header-sub">
+
+🍴 المطاعم والكافيهات
+
+</div>
+
+
+
+</div>
+
+
+
+
+<div class="search-box">
+
+
+<input
+
+type="text"
+
+id="searchInput"
+
+placeholder="🔍 ابحث عن مطعم أو كافيه..."
+
+>
+
+
+</div>
+
+
+
+
+<div class="restaurant-count"
+
+id="restaurantCount">
+
+عدد الأماكن: 0
+
+</div>
+
+
+
+
+<div class="container"
+
+id="restaurants">
+
+</div>
+
+
+
+
+<div class="bottom-nav">
+
+
+<a href="index.html">
+
+📍 الخريطة
+
+</a>
+
+
+
+<a href="restaurants.html" class="active">
+
+🍴 المطاعم
+
+</a>
+
+
+
+<a href="about.html">
+
+ℹ️ عن الموقع
+
+</a>
+
+
+
+</div>
+<script src="data.js"></script>
+
+
+<script>
+
+
+const restaurantsBox = 
+document.getElementById("restaurants");
+
+
+
+const searchInput =
+document.getElementById("searchInput");
+
+
+
+const count =
+document.getElementById("restaurantCount");
+
+
+
+
+
+let restaurants = Object.keys(restaurantsData).map(name=>{
+
+
+return {
+
+name:name,
+
+...restaurantsData[name]
+
+};
+
+
+});
+
+
+
+
+
+
+
+function displayRestaurants(list){
+
+
+let html="";
+
+
+
+list.forEach(rest=>{
+
+
+html += `
+
+
+<div class="restaurant"
+
+onclick="openRestaurant('${rest.name}')"
+
+>
+
+
+
+<img src="${rest.logo}" alt="${rest.name}">
+
+
+
+<div class="info">
+
+
+<h3>
+
+${rest.name}
+
+</h3>
+
+
+
+<p>
+
+📍 Porto Sokhna
+
+</p>
+
+
+
+<div class="restaurant-rating">
+
+${rest.rating}
+
+</div>
+
+
+
+<div style="
+
+color:#777;
+
+font-size:13px;
+
+margin-top:5px;
+
+">
+
+${rest.type || "مطعم"}
+
+</div>
+
+
+
+</div>
+
+
+
+
+<div class="arrow">
+
+›
+
+</div>
+
+
+
+</div>
+
+
+
+`;
+
+
+
+});
+
+
+
+restaurantsBox.innerHTML = html;
+
+
+
+count.innerText =
+
+"عدد الأماكن: " + list.length;
+
+
+
+}
+
+
+
+
+
+
+
+function openRestaurant(name){
+
+
+localStorage.setItem(
+
+"restaurant",
+
+name
+
+);
+
+
+
+window.location.href =
+
+"restaurant.html";
+
+
+
+}
+
+
+
+
+
+
+
+displayRestaurants(restaurants);
+
+
+
+
+
+
+
+searchInput.addEventListener(
+
+"input",
+
+function(){
+
+
+
+const value =
+
+this.value.toLowerCase();
+
+
+
+
+
+const filtered =
+
+restaurants.filter(rest=>
+
+
+rest.name
+
+.toLowerCase()
+
+.includes(value)
+
+
+
+);
+
+
+
+displayRestaurants(filtered);
+
+
+
+}
+
+
+
+);
+
+
+
+
+
+</script>
+
+
+
+</body>
+
 </html>
